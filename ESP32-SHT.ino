@@ -1,13 +1,17 @@
 #include <Wire.h>
 #include <Adafruit_SHT31.h>
 
+const int SDA_PIN = 21;
+const int SCL_PIN = 22;
+const int READ_DELAY_MS = 300000;
+
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
 
 void setup() {
   Serial.begin(115200);
   delay(1000);
 
-  Wire.begin(21, 22);
+  Wire.begin(SDA_PIN, SCL_PIN);
 
   Serial.println("Starting sensor...");
 
@@ -40,5 +44,5 @@ void loop() {
     Serial.println("Failed to read sensor.");
   }
 
-  delay(3000);
+  delay(READ_DELAY_MS);;
 }
